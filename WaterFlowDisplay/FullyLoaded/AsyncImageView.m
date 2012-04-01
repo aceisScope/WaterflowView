@@ -66,11 +66,12 @@
     [self.request setDelegate:self];
     [self.request setCompletionBlock:^(void){
          self.request.delegate = nil;
-         self.request = nil;
          
          NSLog(@"async image download done");
          
          NSString * imageURL = [[self.request.originalURL absoluteString] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        
+        self.request = nil;
          
          dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
          dispatch_async(queue, ^{
