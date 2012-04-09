@@ -8,11 +8,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "WaterFlowDisplay/WaterflowView.m"
-         timestampString = "354780005.191914"
+         timestampString = "355652354.662735"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "216"
-         endingLineNumber = "216"
+         startingLineNumber = "253"
+         endingLineNumber = "253"
          landmarkName = "-pageScroll"
          landmarkType = "5">
       </FileBreakpoint>
@@ -34,11 +34,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "WaterFlowDisplay/WaterflowView.m"
-         timestampString = "354780005.191914"
+         timestampString = "355650655.128587"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "143"
-         endingLineNumber = "143"
+         startingLineNumber = "167"
+         endingLineNumber = "167"
          landmarkName = "-initialize"
          landmarkType = "5">
       </FileBreakpoint>
@@ -47,11 +47,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "WaterFlowDisplay/WaterflowView.m"
-         timestampString = "354780005.191914"
+         timestampString = "355650655.128587"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "133"
-         endingLineNumber = "133"
+         startingLineNumber = "157"
+         endingLineNumber = "157"
          landmarkName = "-initialize"
          landmarkType = "5">
       </FileBreakpoint>
@@ -73,11 +73,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "WaterFlowDisplay/WaterflowView.m"
-         timestampString = "354780005.191914"
+         timestampString = "355650655.128587"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "132"
-         endingLineNumber = "132"
+         startingLineNumber = "156"
+         endingLineNumber = "156"
          landmarkName = "-initialize"
          landmarkType = "5">
       </FileBreakpoint>
@@ -86,11 +86,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "WaterFlowDisplay/WaterflowView.m"
-         timestampString = "354780005.191914"
+         timestampString = "355652354.662735"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "187"
-         endingLineNumber = "187"
+         startingLineNumber = "224"
+         endingLineNumber = "224"
          landmarkName = "-pageScroll"
          landmarkType = "5">
       </FileBreakpoint>
@@ -99,11 +99,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "WaterFlowDisplay/WaterflowView.m"
-         timestampString = "354780005.191914"
+         timestampString = "355652354.662735"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "283"
-         endingLineNumber = "283"
+         startingLineNumber = "320"
+         endingLineNumber = "320"
          landmarkName = "-pageScroll"
          landmarkType = "5">
       </FileBreakpoint>
@@ -112,12 +112,51 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "WaterFlowDisplay/WaterflowView.m"
-         timestampString = "354780005.191914"
+         timestampString = "355652354.662735"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "274"
-         endingLineNumber = "274"
+         startingLineNumber = "311"
+         endingLineNumber = "311"
          landmarkName = "-pageScroll"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "WaterFlowDisplay/WaterflowView.m"
+         timestampString = "355650655.128587"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "185"
+         endingLineNumber = "185"
+         landmarkName = "-reloadData"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "WaterFlowDisplay/LoadingMoreFooterView/LoadingMoreFooterView.m"
+         timestampString = "355650453.712516"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "68"
+         endingLineNumber = "68"
+         landmarkName = "-setShowActivityIndicator:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "WaterFlowDisplay/WaterflowView.m"
+         timestampString = "355652354.662735"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "198"
+         endingLineNumber = "198"
+         landmarkName = "-reloadData"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

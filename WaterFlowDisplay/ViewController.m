@@ -27,7 +27,7 @@
     flowView.flowdelegate = self;
     [self.view addSubview:flowView];
         
-    self.imageUrls = [NSArray arrayWithObjects:@"http://img.topit.me/l/201008/11/12815218412635.jpg",@"http://photo.l99.com/bigger/22/1284013907276_zb834a.jpg",@"http://img.fftxt.com/attachment/Day_070516/43_187947_a936a0de9cb4746.jpg",@"http://imgsrc.baidu.com/baike/pic/item/fc5e5f3405e93e20241f14f6.jpg",@"http://hiphotos.baidu.com/namealex/pic/item/55fef9ee2dc64ebcb3fb9538.jpg",nil];
+    self.imageUrls = [NSArray arrayWithObjects:@"http://img.topit.me/l/201008/11/12815218412635.jpg",@"http://photo.l99.com/bigger/22/1284013907276_zb834a.jpg",@"http://www.webdesign.org/img_articles/7072/BW-kitten.jpg",@"http://www.raiseakitten.com/wp-content/uploads/2012/03/kitten.jpg",@"http://imagecache6.allposters.com/LRG/21/2144/C8BCD00Z.jpg",nil];
     
     [flowView reloadData];
 }

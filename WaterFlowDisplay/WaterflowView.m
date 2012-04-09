@@ -7,17 +7,30 @@
 //
 
 #import "WaterflowView.h"
+#import "LoadingMoreFooterView.h"
+#import "EGORefreshTableHeaderView.h"
 
-@interface WaterflowView()
+#define LOADINGVIEW_HEIGHT 44
+#define REFRESHINGVIEW_HEIGHT 88
+
+@interface WaterflowView() <EGORefreshTableHeaderDelegate>
 - (void)initialize;
 - (void)recycleCellIntoReusableQueue:(WaterFlowCell*)cell;
 - (void)pageScroll;
 - (void)cellSelected:(NSNotification*)notification;
+
+@property(nonatomic,retain) LoadingMoreFooterView *loadFooterView; 
+@property(nonatomic,readwrite) BOOL loadingmore;
+
+@property(nonatomic, retain) EGORefreshTableHeaderView * refreshHeaderView;  //下拉刷新
+@property(nonatomic, readwrite) BOOL isRefreshing; 
 @end
 
 @implementation WaterflowView
 @synthesize cellHeight=_cellHeight,visibleCells=_visibleCells,reusableCells=_reusedCells;
 @synthesize flowdelegate=_flowdelegate,flowdatasource=_flowdatasource;
+@synthesize loadFooterView=_loadFooterView,loadingmore=_loadingmore;
+@synthesize refreshHeaderView=_refreshHeaderView,isRefreshing=_isRefreshing;
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -32,6 +45,16 @@
                                                  selector:@selector(cellSelected:)
                                                      name:@"CellSelected"
                                                    object:nil];
+        
+        
+        self.loadFooterView = [[LoadingMoreFooterView alloc]initWithFrame:CGRectMake(0, 0, self.frame.size.width, 44.f)];
+        self.loadingmore = NO;
+        [self addSubview:self.loadFooterView];
+        
+        self.refreshHeaderView = [[[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f,  -REFRESHINGVIEW_HEIGHT, self.frame.size.width,REFRESHINGVIEW_HEIGHT)] autorelease];
+        [self addSubview:self.refreshHeaderView];
+        self.refreshHeaderView.delegate = self;
+        self.isRefreshing = NO;
         
         currentPage = 1;
         [self initialize];
@@ -50,6 +73,7 @@
     self.reusableCells = nil;
     self.flowdatasource = nil;
     self.flowdelegate = nil;
+    self.loadFooterView = nil;
     [super dealloc];
 }
 
@@ -149,7 +173,9 @@
         scrollHeight = (columHeight >= scrollHeight)?columHeight:scrollHeight;
     }
     
-    self.contentSize = CGSizeMake(self.frame.size.width, scrollHeight);
+    self.contentSize = CGSizeMake(self.frame.size.width, scrollHeight + LOADINGVIEW_HEIGHT);
+    
+    self.loadFooterView.frame = CGRectMake(0, scrollHeight, self.frame.size.width, LOADINGVIEW_HEIGHT);
     
     [self pageScroll];
 }
@@ -167,6 +193,17 @@
         }
     }
     
+    if(self.loadingmore)
+    {
+        self.loadingmore = NO;
+        self.loadFooterView.showActivityIndicator = NO;
+    }
+    if (self.isRefreshing)
+    {
+        self.isRefreshing = NO;
+        [self.refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:self];
+    }
+
     [self initialize];
 }
 
@@ -322,29 +359,47 @@
 {
     [self pageScroll];
     
-    float bottomEdge = scrollView.contentOffset.y + scrollView.frame.size.height;
-    if (bottomEdge >= scrollView.contentSize.height) 
-    {
-        //load more
-        currentPage ++;
-        [self reloadData];
-    }
-}
-- (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView
-{
-    
+    [self.refreshHeaderView egoRefreshScrollViewDidScroll:scrollView];
 }
 
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView 
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
 {
-//    float bottomEdge = scrollView.contentOffset.y + scrollView.frame.size.height;
-//    if (bottomEdge >= scrollView.contentSize.height) 
-//    {
-//       //load more
-//        currentPage ++;
-//        [self reloadData];
-//    }
+	[self.refreshHeaderView egoRefreshScrollViewDidEndDragging:scrollView];
+	
 }
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
+    float bottomEdge = scrollView.contentOffset.y + scrollView.frame.size.height;
+    if (bottomEdge >= scrollView.contentSize.height ) 
+    {
+        if (self.loadingmore) return;
+        
+        NSLog(@"load more");
+        self.loadingmore = YES;
+        self.loadFooterView.showActivityIndicator = YES;
+        
+        currentPage ++;
+        [self performSelector:@selector(reloadData) withObject:self afterDelay:1.0f]; //make a delay to show loading process for a while
+    }
+}
+
+#pragma mark -
+#pragma mark EGORefreshTableHeaderDelegate Methods
+
+- (void)egoRefreshTableHeaderDidTriggerRefresh:(EGORefreshTableHeaderView*)view
+{
+    self.isRefreshing = YES;
+    
+    currentPage = 1;
+    [self performSelector:@selector(reloadData) withObject:self afterDelay:1.0f];  //make a delay to show loading process for a while
+}
+
+- (BOOL)egoRefreshTableHeaderDataSourceIsLoading:(EGORefreshTableHeaderView*)view
+{
+	return self.isRefreshing; // should return if data source model is reloading
+}
+
 @end
 
 //===================================================================

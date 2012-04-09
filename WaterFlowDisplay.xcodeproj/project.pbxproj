@@ -17,6 +17,9 @@
 		806B44F5152401EC00E59412 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 806B44F3152401EC00E59412 /* ViewController.xib */; };
 		806B44FD1524048D00E59412 /* WaterflowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 806B44FC1524048D00E59412 /* WaterflowView.m */; };
 		806B4514152463DF00E59412 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 806B4513152463DF00E59412 /* QuartzCore.framework */; };
+		8083BC981532B194008D4DF5 /* LoadingMoreFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8083BC971532B194008D4DF5 /* LoadingMoreFooterView.m */; };
+		8083BCA11532BF11008D4DF5 /* EGORefreshTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8083BCA01532BF11008D4DF5 /* EGORefreshTableHeaderView.m */; };
+		8083BCA31532C299008D4DF5 /* blueArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 8083BCA21532C299008D4DF5 /* blueArrow.png */; };
 		80DE39A31525636B002EFAE3 /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 80DE39861525636B002EFAE3 /* ASIAuthenticationDialog.m */; };
 		80DE39A41525636B002EFAE3 /* ASIDataCompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 80DE39891525636B002EFAE3 /* ASIDataCompressor.m */; };
 		80DE39A51525636B002EFAE3 /* ASIDataDecompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 80DE398B1525636B002EFAE3 /* ASIDataDecompressor.m */; };
@@ -53,6 +56,11 @@
 		806B44FB1524048D00E59412 /* WaterflowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaterflowView.h; sourceTree = "<group>"; };
 		806B44FC1524048D00E59412 /* WaterflowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = WaterflowView.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		806B4513152463DF00E59412 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		8083BC961532B194008D4DF5 /* LoadingMoreFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingMoreFooterView.h; sourceTree = "<group>"; };
+		8083BC971532B194008D4DF5 /* LoadingMoreFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingMoreFooterView.m; sourceTree = "<group>"; };
+		8083BC9F1532BF11008D4DF5 /* EGORefreshTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGORefreshTableHeaderView.h; sourceTree = "<group>"; };
+		8083BCA01532BF11008D4DF5 /* EGORefreshTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGORefreshTableHeaderView.m; sourceTree = "<group>"; };
+		8083BCA21532C299008D4DF5 /* blueArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blueArrow.png; sourceTree = "<group>"; };
 		80DE39851525636B002EFAE3 /* ASIAuthenticationDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIAuthenticationDialog.h; sourceTree = "<group>"; };
 		80DE39861525636B002EFAE3 /* ASIAuthenticationDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIAuthenticationDialog.m; sourceTree = "<group>"; };
 		80DE39871525636B002EFAE3 /* ASICacheDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASICacheDelegate.h; sourceTree = "<group>"; };
@@ -112,6 +120,8 @@
 		806B44CF152401EC00E59412 = {
 			isa = PBXGroup;
 			children = (
+				8083BC9E1532BF11008D4DF5 /* EGORefreshTableHeaderView */,
+				8083BC951532B194008D4DF5 /* LoadingMoreFooterView */,
 				80DE39841525636B002EFAE3 /* ASIHTTPRequest */,
 				80DE399E1525636B002EFAE3 /* FullyLoaded */,
 				806B44E4152401EC00E59412 /* WaterFlowDisplay */,
@@ -168,6 +178,27 @@
 				806B44EC152401EC00E59412 /* WaterFlowDisplay-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		8083BC951532B194008D4DF5 /* LoadingMoreFooterView */ = {
+			isa = PBXGroup;
+			children = (
+				8083BC961532B194008D4DF5 /* LoadingMoreFooterView.h */,
+				8083BC971532B194008D4DF5 /* LoadingMoreFooterView.m */,
+			);
+			name = LoadingMoreFooterView;
+			path = WaterFlowDisplay/LoadingMoreFooterView;
+			sourceTree = "<group>";
+		};
+		8083BC9E1532BF11008D4DF5 /* EGORefreshTableHeaderView */ = {
+			isa = PBXGroup;
+			children = (
+				8083BCA21532C299008D4DF5 /* blueArrow.png */,
+				8083BC9F1532BF11008D4DF5 /* EGORefreshTableHeaderView.h */,
+				8083BCA01532BF11008D4DF5 /* EGORefreshTableHeaderView.m */,
+			);
+			name = EGORefreshTableHeaderView;
+			path = WaterFlowDisplay/EGORefreshTableHeaderView;
 			sourceTree = "<group>";
 		};
 		80DE39841525636B002EFAE3 /* ASIHTTPRequest */ = {
@@ -276,6 +307,7 @@
 			files = (
 				806B44E9152401EC00E59412 /* InfoPlist.strings in Resources */,
 				806B44F5152401EC00E59412 /* ViewController.xib in Resources */,
+				8083BCA31532C299008D4DF5 /* blueArrow.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -302,6 +334,8 @@
 				80DE39AC1525636B002EFAE3 /* Reachability.m in Sources */,
 				80DE39AD1525636B002EFAE3 /* AsyncImageView.m in Sources */,
 				80DE39AE1525636B002EFAE3 /* FullyLoaded.m in Sources */,
+				8083BC981532B194008D4DF5 /* LoadingMoreFooterView.m in Sources */,
+				8083BCA11532BF11008D4DF5 /* EGORefreshTableHeaderView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
