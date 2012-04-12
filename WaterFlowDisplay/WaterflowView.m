@@ -177,6 +177,12 @@
     
     self.loadFooterView.frame = CGRectMake(0, scrollHeight, self.frame.size.width, LOADINGVIEW_HEIGHT);
     
+    if ((scrollHeight <= self.frame.size.height)) 
+    {
+        self.contentSize = CGSizeMake(self.frame.size.width, scrollHeight);
+        [self.loadFooterView removeFromSuperview];
+    }
+    
     [self pageScroll];
 }
 
