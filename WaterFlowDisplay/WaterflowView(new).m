@@ -15,6 +15,7 @@
 
 @interface WaterflowView() <EGORefreshTableHeaderDelegate>
 - (void)initialize;
+- (void)reloadData;
 - (void)recycleCellIntoReusableQueue:(WaterFlowCell*)cell;
 - (void)pageScroll;
 - (void)cellSelected:(NSNotification*)notification;
@@ -27,7 +28,7 @@
 @end
 
 @implementation WaterflowView
-@synthesize cellHeight=_cellHeight,visibleCells=_visibleCells,reusableCells=_reusedCells;
+@synthesize cellHeight=_cellHeight,visibleCells=_visibleCells,reusableCells=_reusedCells,cellIndex=_cellIndex;
 @synthesize flowdelegate=_flowdelegate,flowdatasource=_flowdatasource;
 @synthesize loadFooterView=_loadFooterView,loadingmore=_loadingmore;
 @synthesize refreshHeaderView=_refreshHeaderView,isRefreshing=_isRefreshing;
@@ -50,11 +51,6 @@
         self.loadFooterView = [[LoadingMoreFooterView alloc]initWithFrame:CGRectMake(0, 0, self.frame.size.width, 44.f)];
         self.loadingmore = NO;
         [self addSubview:self.loadFooterView];
-        
-        self.refreshHeaderView = [[[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f,  -REFRESHINGVIEW_HEIGHT, self.frame.size.width,REFRESHINGVIEW_HEIGHT)] autorelease];
-        [self addSubview:self.refreshHeaderView];
-        self.refreshHeaderView.delegate = self;
-        self.isRefreshing = NO;
         
         currentPage = 1;
         [self initialize];
@@ -93,9 +89,14 @@
 #pragma mark- process notification
 - (void)cellSelected:(NSNotification *)notification
 {
-    if ([self.flowdelegate respondsToSelector:@selector(flowView:didSelectRowAtIndexPath:)])
+//    if ([self.flowdelegate respondsToSelector:@selector(flowView:didSelectRowAtIndexPath:)])
+//    {
+//        [self.flowdelegate flowView:self didSelectRowAtIndexPath:((WaterFlowCell*)notification.object).indexPath];
+//    }
+    if ([self.flowdelegate respondsToSelector:@selector(flowView:didSelectAtCell:ForIndex:)])
     {
-        [self.flowdelegate flowView:self didSelectRowAtIndexPath:((WaterFlowCell*)notification.object).indexPath];
+        int index = [[[self.cellIndex objectAtIndex:((WaterFlowCell*)notification.object).indexPath.section]objectAtIndex:((WaterFlowCell*)notification.object).indexPath.row] intValue];
+        [self.flowdelegate flowView:self didSelectAtCell:((WaterFlowCell*)notification.object) ForIndex:index];
     }
 }
 
@@ -138,7 +139,7 @@
             [[self.reusableCells objectForKey:cell.reuseIdentifier] addObject:cell];
         }
     }
-
+    
 }
 
 #pragma mark-
@@ -149,10 +150,51 @@
     
     self.reusableCells = [NSMutableDictionary dictionary];
     self.cellHeight = [NSMutableArray arrayWithCapacity:numberOfColumns];
+    self.cellIndex = [NSMutableArray arrayWithCapacity:numberOfColumns];
     self.visibleCells = [NSMutableArray arrayWithCapacity:numberOfColumns];
     
     CGFloat scrollHeight = 0.f;
     
+    /////
+    for (int i = 0; i<numberOfColumns; i++)
+    {
+        [self.visibleCells addObject:[NSMutableArray array]]; 
+    }
+    CGFloat minHeight = 0.f;
+    NSInteger minHeightAtColumn = 0;
+    for (int i = 0; i< numberOfColumns*[_flowdatasource flowView:self numberOfRowsInColumn:i]*currentPage ; i++)
+    {        
+        //找到高度最小的列并把cell高度插入
+        //最早的3张图
+        if(self.cellHeight.count < numberOfColumns)
+        {
+            [self.cellHeight addObject:[NSMutableArray arrayWithObject:[NSNumber numberWithFloat:[self.flowdelegate flowView:self heightForCellAtIndex:i]]]];
+            [self.cellIndex addObject:[NSMutableArray arrayWithObject:[NSNumber numberWithInt:i]]];
+            minHeight = [self.flowdelegate flowView:self heightForCellAtIndex:i];
+            continue;
+        }
+        
+        for (int j = 0; j< numberOfColumns; j++)
+        {
+            NSMutableArray *cellHeightInPresentColumn = [NSMutableArray arrayWithArray:[self.cellHeight objectAtIndex:j]];
+            if (floor([[cellHeightInPresentColumn lastObject]floatValue]) <= minHeight)
+            {
+                minHeight = [[cellHeightInPresentColumn lastObject]floatValue];
+                minHeightAtColumn = j;
+            }
+        }
+        [[self.cellHeight objectAtIndex:minHeightAtColumn] addObject:[NSNumber numberWithFloat:minHeight+=[self.flowdelegate flowView:self heightForCellAtIndex:i]]];
+        [[self.cellIndex objectAtIndex:minHeightAtColumn]addObject:[NSNumber numberWithInt:i]];
+    }
+    for (int j = 0; j< numberOfColumns; j++)
+    {
+        if(self.cellHeight.count < numberOfColumns ||self.cellHeight.count == 0) break;
+        CGFloat columnHeight = [[[self.cellHeight objectAtIndex:j] lastObject] floatValue];
+        scrollHeight = scrollHeight>columnHeight?scrollHeight:columnHeight;
+    }
+    ///////
+    
+    /*
     ////put height of cells per column into an array, then add this array into self.cellHeight
     for (int i = 0; i< numberOfColumns; i++)
     {
@@ -172,11 +214,13 @@
         [self.cellHeight addObject:cellHeightInOneColume];
         scrollHeight = (columHeight >= scrollHeight)?columHeight:scrollHeight;
     }
+     */
     
     self.contentSize = CGSizeMake(self.frame.size.width, scrollHeight + LOADINGVIEW_HEIGHT);
     
     self.loadFooterView.frame = CGRectMake(0, scrollHeight, self.frame.size.width, LOADINGVIEW_HEIGHT);
-    
+
+     
     [self pageScroll];
 }
 
@@ -198,12 +242,6 @@
         self.loadingmore = NO;
         self.loadFooterView.showActivityIndicator = NO;
     }
-    if (self.isRefreshing)
-    {
-        self.isRefreshing = NO;
-        [self.refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:self];
-    }
-
     [self initialize];
 }
 
@@ -216,7 +254,7 @@
     {
         float origin_x = i * (self.frame.size.width / numberOfColumns);
 		float width = self.frame.size.width / numberOfColumns;
-                
+        
         WaterFlowCell *cell = nil;
         
         if ([self.visibleCells objectAtIndex:i] == nil || ((NSArray*)[self.visibleCells objectAtIndex:i]).count == 0) //everytime reloadData is called and no cells in visibleCellArray
@@ -231,9 +269,9 @@
 				}
 			}
 			
-            #ifdef DEBUG
+#ifdef DEBUG
 			NSLog(@"row to display %d", rowToDisplay);
-            #endif	
+#endif	
             
 			float origin_y = 0;
 			float height = 0;
@@ -247,13 +285,13 @@
 				origin_y = [[[self.cellHeight objectAtIndex:i] objectAtIndex:rowToDisplay - 1] floatValue];
 				height  = [[[self.cellHeight objectAtIndex:i] objectAtIndex:rowToDisplay ] floatValue] - origin_y;
 			}
-			
-			cell = [_flowdatasource flowView:self cellForRowAtIndexPath:[NSIndexPath indexPathForRow:rowToDisplay inSection:i]];
+    
+			cell = [_flowdatasource flowView:self cellForRowAtIndex:[[[self.cellIndex objectAtIndex:i]objectAtIndex:rowToDisplay]intValue]];
 			cell.indexPath = [NSIndexPath indexPathForRow: rowToDisplay inSection:i];
 			cell.frame = CGRectMake(origin_x, origin_y, width, height);
 			[self addSubview:cell];
 			[[self.visibleCells objectAtIndex:i] insertObject:cell atIndex:0];
-       }
+        }
         else   //there are cells in visibelCellArray
         {
             cell = [[self.visibleCells objectAtIndex:i] objectAtIndex:0];
@@ -283,7 +321,7 @@
                 height = [[[self.cellHeight objectAtIndex:i] objectAtIndex:rowToDisplay - 1] floatValue] - origin_y;
             }
             
-            cell = [self.flowdatasource flowView:self cellForRowAtIndexPath:[NSIndexPath indexPathForRow: rowToDisplay > 0 ? (rowToDisplay  - 1) : 0 inSection:i]];
+            cell = [self.flowdatasource flowView:self cellForRowAtIndex:[[[self.cellIndex objectAtIndex:i]objectAtIndex:rowToDisplay > 0 ? (rowToDisplay  - 1) : 0]intValue]];
             cell.indexPath = [NSIndexPath indexPathForRow: rowToDisplay > 0 ? (rowToDisplay - 1) : 0 inSection:i];
             cell.frame = CGRectMake(origin_x,origin_y , width, height);
             [[self.visibleCells objectAtIndex:i] insertObject:cell atIndex:0];
@@ -327,7 +365,7 @@
                 height = [[[self.cellHeight objectAtIndex:i] objectAtIndex:rowToDisplay + 1] floatValue] -  origin_y;
             }
             
-            cell = [self.flowdatasource flowView:self cellForRowAtIndexPath:[NSIndexPath indexPathForRow:rowToDisplay + 1 inSection:i]];
+            cell = [self.flowdatasource flowView:self cellForRowAtIndex:[[[self.cellIndex objectAtIndex:i]objectAtIndex:rowToDisplay+1]intValue]];
             cell.indexPath = [NSIndexPath indexPathForRow:rowToDisplay + 1 inSection:i];
             cell.frame = CGRectMake(origin_x, origin_y, width, height);
             [[self.visibleCells objectAtIndex:i] addObject:cell];
@@ -358,47 +396,34 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     [self pageScroll];
-    
-    [self.refreshHeaderView egoRefreshScrollViewDidScroll:scrollView];
-}
-
-- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
-{
-	[self.refreshHeaderView egoRefreshScrollViewDidEndDragging:scrollView];
-	
 }
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
 {
     float bottomEdge = scrollView.contentOffset.y + scrollView.frame.size.height;
- 
-    if (bottomEdge >= scrollView.contentSize.height ) 
+    
+    if (bottomEdge >=  floor(scrollView.contentSize.height) ) 
     {
         if (self.loadingmore) return;
+        
+        if (currentPage == 10)
+        {
+            NSLog(@"到最后一页");
+            //toast view
+            return;
+        }
         
         NSLog(@"load more");
         self.loadingmore = YES;
         self.loadFooterView.showActivityIndicator = YES;
         
         currentPage ++;
-        [self performSelector:@selector(reloadData) withObject:self afterDelay:1.0f]; //make a delay to show loading process for a while
+        if ([self.flowdelegate respondsToSelector:@selector(flowView:willLoadData:)])
+        {
+            [self.flowdelegate flowView:self willLoadData:currentPage];  //在delegate中对flowview进行reloadData
+        }
+        //[self performSelector:@selector(reloadData) withObject:self afterDelay:1.0f]; //make a delay to show loading process for a while
     }
-}
-
-#pragma mark -
-#pragma mark EGORefreshTableHeaderDelegate Methods
-
-- (void)egoRefreshTableHeaderDidTriggerRefresh:(EGORefreshTableHeaderView*)view
-{
-    self.isRefreshing = YES;
-    
-    currentPage = 1;
-    [self performSelector:@selector(reloadData) withObject:self afterDelay:1.0f];  //make a delay to show loading process for a while
-}
-
-- (BOOL)egoRefreshTableHeaderDataSourceIsLoading:(EGORefreshTableHeaderView*)view
-{
-	return self.isRefreshing; // should return if data source model is reloading
 }
 
 @end
@@ -433,7 +458,7 @@
 {
     [[NSNotificationCenter defaultCenter] postNotificationName:@"CellSelected"
                                                         object:self
-                                                      userInfo:[NSDictionary dictionaryWithObject:self.indexPath forKey:@"IndexPath"]];
+                                                      userInfo:[NSDictionary dictionaryWithObjectsAndKeys:self,@"cell",self.indexPath,@"indexPath",nil]];
     
 }
 

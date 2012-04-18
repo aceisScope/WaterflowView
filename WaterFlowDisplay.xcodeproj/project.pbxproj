@@ -56,6 +56,8 @@
 		806B44FB1524048D00E59412 /* WaterflowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaterflowView.h; sourceTree = "<group>"; };
 		806B44FC1524048D00E59412 /* WaterflowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = WaterflowView.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		806B4513152463DF00E59412 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		8081473D153E95CF00D5EEE7 /* WaterflowView(new).m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "WaterflowView(new).m"; sourceTree = "<group>"; };
+		8081473E153E95CF00D5EEE7 /* WaterflowView(new).h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WaterflowView(new).h"; sourceTree = "<group>"; };
 		8083BC961532B194008D4DF5 /* LoadingMoreFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingMoreFooterView.h; sourceTree = "<group>"; };
 		8083BC971532B194008D4DF5 /* LoadingMoreFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingMoreFooterView.m; sourceTree = "<group>"; };
 		8083BC9F1532BF11008D4DF5 /* EGORefreshTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGORefreshTableHeaderView.h; sourceTree = "<group>"; };
@@ -165,6 +167,8 @@
 				806B44E5152401EC00E59412 /* Supporting Files */,
 				806B44FB1524048D00E59412 /* WaterflowView.h */,
 				806B44FC1524048D00E59412 /* WaterflowView.m */,
+				8081473D153E95CF00D5EEE7 /* WaterflowView(new).m */,
+				8081473E153E95CF00D5EEE7 /* WaterflowView(new).h */,
 			);
 			path = WaterFlowDisplay;
 			sourceTree = "<group>";
