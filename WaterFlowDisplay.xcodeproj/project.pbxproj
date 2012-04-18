@@ -167,8 +167,8 @@
 				806B44E5152401EC00E59412 /* Supporting Files */,
 				806B44FB1524048D00E59412 /* WaterflowView.h */,
 				806B44FC1524048D00E59412 /* WaterflowView.m */,
-				8081473D153E95CF00D5EEE7 /* WaterflowView(new).m */,
 				8081473E153E95CF00D5EEE7 /* WaterflowView(new).h */,
+				8081473D153E95CF00D5EEE7 /* WaterflowView(new).m */,
 			);
 			path = WaterFlowDisplay;
 			sourceTree = "<group>";

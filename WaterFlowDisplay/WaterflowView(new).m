@@ -164,8 +164,7 @@
     NSInteger minHeightAtColumn = 0;
     for (int i = 0; i< numberOfColumns*[_flowdatasource flowView:self numberOfRowsInColumn:i]*currentPage ; i++)
     {        
-        //找到高度最小的列并把cell高度插入
-        //最早的3张图
+        //the first pics
         if(self.cellHeight.count < numberOfColumns)
         {
             [self.cellHeight addObject:[NSMutableArray arrayWithObject:[NSNumber numberWithFloat:[self.flowdelegate flowView:self heightForCellAtIndex:i]]]];
@@ -174,6 +173,7 @@
             continue;
         }
         
+        //find the column with the shortest height and insert the cell height into self.cellHeight[column]
         for (int j = 0; j< numberOfColumns; j++)
         {
             NSMutableArray *cellHeightInPresentColumn = [NSMutableArray arrayWithArray:[self.cellHeight objectAtIndex:j]];
