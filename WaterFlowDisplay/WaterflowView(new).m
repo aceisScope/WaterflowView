@@ -12,6 +12,7 @@
 
 #define LOADINGVIEW_HEIGHT 44
 #define REFRESHINGVIEW_HEIGHT 88
+#define MAX_PAGE 10
 
 @interface WaterflowView() <EGORefreshTableHeaderDelegate>
 - (void)initialize;
@@ -23,7 +24,7 @@
 @property(nonatomic,retain) LoadingMoreFooterView *loadFooterView; 
 @property(nonatomic,readwrite) BOOL loadingmore;
 
-@property(nonatomic, retain) EGORefreshTableHeaderView * refreshHeaderView;  //下拉刷新
+@property(nonatomic, retain) EGORefreshTableHeaderView * refreshHeaderView;  
 @property(nonatomic, readwrite) BOOL isRefreshing; 
 @end
 
@@ -406,9 +407,9 @@
     {
         if (self.loadingmore) return;
         
-        if (currentPage == 10)
+        if (currentPage == MAX_PAGE)
         {
-            NSLog(@"到最后一页");
+            NSLog(@"last page!");
             //toast view
             return;
         }
