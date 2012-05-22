@@ -37,6 +37,7 @@
 - (CGFloat)flowView:(WaterflowView *)flowView heightForRowAtIndexPath:(NSIndexPath *)indexPath;
 @optional
 - (void)flowView:(WaterflowView *)flowView didSelectRowAtIndexPath:(NSIndexPath *)indexPath;
+- (void)flowView:(WaterflowView *)flowView willLoadData:(int)page;
 @end
 
 ////Waterflow View

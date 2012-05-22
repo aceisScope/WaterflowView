@@ -391,7 +391,11 @@
         self.loadFooterView.showActivityIndicator = YES;
         
         currentPage ++;
-        [self performSelector:@selector(reloadData) withObject:self afterDelay:1.0f]; //make a delay to show loading process for a while
+        if ([self.flowdelegate respondsToSelector:@selector(flowView:willLoadData:)])
+        {
+            [self.flowdelegate flowView:self willLoadData:currentPage];  //reloadData in delegate
+        }
+        //[self performSelector:@selector(reloadData) withObject:self afterDelay:1.0f]; //make a delay to show loading process for a while
     }
 }
 

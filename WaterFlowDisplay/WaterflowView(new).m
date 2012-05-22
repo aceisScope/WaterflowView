@@ -421,7 +421,7 @@
         currentPage ++;
         if ([self.flowdelegate respondsToSelector:@selector(flowView:willLoadData:)])
         {
-            [self.flowdelegate flowView:self willLoadData:currentPage];  //在delegate中对flowview进行reloadData
+            [self.flowdelegate flowView:self willLoadData:currentPage];  //reloadData in delegate
         }
         //[self performSelector:@selector(reloadData) withObject:self afterDelay:1.0f]; //make a delay to show loading process for a while
     }
