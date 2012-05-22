@@ -204,6 +204,7 @@
 
 - (void)flowView:(WaterflowView *)_flowView willLoadData:(int)page
 {
+    //make a judegement to decide whether to call reloadData or reloadFailed
     [flowView reloadData];
 }
 

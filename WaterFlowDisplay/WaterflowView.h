@@ -54,6 +54,7 @@
 }
 
 - (void)reloadData;
+- (void)reloadFailed;
 
 - (id)dequeueReusableCellWithIdentifier:(NSString *)identifier;
 

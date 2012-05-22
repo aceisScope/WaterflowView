@@ -180,6 +180,16 @@
     [self pageScroll];
 }
 
+- (void)reloadFailed
+{
+    currentPage --;
+    if(self.loadingmore)
+    {
+        self.loadingmore = NO;
+        self.loadFooterView.showActivityIndicator = NO;
+    }
+}
+
 - (void)reloadData
 {
     //remove and recycle all visible cells
