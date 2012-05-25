@@ -7,11 +7,14 @@
 ===
 Resembled datasource and delegate of UITableView, and mainly intended to make a display in the waterflow way of Pinterest. 
 Each cell could be simply initialized with cellAtIndexPath way.
-It is based on LLWaterflow and  I've tested it with AsyncImageView.
 
-The WaterflowViewNew is based on a new layout pattern i.e. whenever to place a new cell, find the shortest column and insert the cell into the column, rather than layout by rows in column in the old one. To imply the new one in project, just change the name of file...
+The WaterflowView(New) is based on a new layout pattern i.e. whenever to place a new cell, find the shortest column and insert the cell into the column, rather than layout by rows in column in the old one. To imply the new one in project, just change the name of file...
 Yet if the images for display are mostly of normal size (not super long), the old WaterflowView is still recommended.
 
-When to load data for WaterflowView, (or not to load), should be decided in the delegate method - (void)flowView:(WaterflowView *)_flowView willLoadData:(int)page
+When to load data for WaterflowView, (or not to load), should be decided in the delegate method '- (void)flowView:(WaterflowView *)_flowView willLoadData:(int)page'
 WaterflowView detects every scroll-to-bottom, and the delegate will "decide" for WaterflowView if it should reloadData or reloadFailed. 
 
+##License
+===
+This is available under the MIT license. See LICENSE.rtf.
+ 
