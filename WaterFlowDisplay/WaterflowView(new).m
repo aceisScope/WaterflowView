@@ -394,9 +394,51 @@
 
 #pragma mark-
 #pragma mark- UIScrollViewDelegate
+- (void)loadMoreImages
+{
+    if (self.loadingmore) return;
+    
+    if (currentPage == MAX_PAGE)
+    {
+        NSLog(@"last page!");
+        //toast view
+        return;
+    }
+    
+    NSLog(@"load more");
+    self.loadingmore = YES;
+    self.loadFooterView.showActivityIndicator = YES;
+    
+    currentPage ++;
+    if ([self.flowdelegate respondsToSelector:@selector(flowView:willLoadData:)])
+    {
+        [self.flowdelegate flowView:self willLoadData:currentPage];  //reloadData in delegate
+    }
+
+}
+
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     [self pageScroll];
+    
+    /*//alternative for firing immediately
+    //if scrollview reaches bottom
+    CGPoint offset = scrollView.contentOffset;
+    CGRect bounds = scrollView.bounds;
+    CGSize size = scrollView.contentSize;
+    UIEdgeInsets inset = scrollView.contentInset;
+    float y = offset.y + bounds.size.height - inset.bottom;
+    float h = size.height;
+    
+    float reload_distance = 10;
+    if(y > h + reload_distance) 
+    {
+        NSLog(@"load more rows");
+        [self loadMoreImages];
+        
+    }
+     */
+     
 }
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
@@ -405,24 +447,7 @@
     
     if (bottomEdge >=  floor(scrollView.contentSize.height) ) 
     {
-        if (self.loadingmore) return;
-        
-        if (currentPage == MAX_PAGE)
-        {
-            NSLog(@"last page!");
-            //toast view
-            return;
-        }
-        
-        NSLog(@"load more");
-        self.loadingmore = YES;
-        self.loadFooterView.showActivityIndicator = YES;
-        
-        currentPage ++;
-        if ([self.flowdelegate respondsToSelector:@selector(flowView:willLoadData:)])
-        {
-            [self.flowdelegate flowView:self willLoadData:currentPage];  //reloadData in delegate
-        }
+        [self loadMoreImages];
         //[self performSelector:@selector(reloadData) withObject:self afterDelay:1.0f]; //make a delay to show loading process for a while
     }
 }
