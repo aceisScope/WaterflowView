@@ -7,39 +7,49 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04B6567D15E52AF300EFACFE /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 04B6567C15E52AF300EFACFE /* libxml2.2.dylib */; };
+		04B6568A15E52B7F00EFACFE /* CollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B6568515E52B7F00EFACFE /* CollectionViewController.m */; };
+		04B6568B15E52B7F00EFACFE /* ColllectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B6568715E52B7F00EFACFE /* ColllectionViewCell.m */; };
+		04B6568C15E52B7F00EFACFE /* WaterFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B6568915E52B7F00EFACFE /* WaterFlowLayout.m */; };
 		806B44DF152401EC00E59412 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 806B44DE152401EC00E59412 /* UIKit.framework */; };
 		806B44E1152401EC00E59412 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 806B44E0152401EC00E59412 /* Foundation.framework */; };
 		806B44E3152401EC00E59412 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 806B44E2152401EC00E59412 /* CoreGraphics.framework */; };
 		806B44E9152401EC00E59412 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 806B44E7152401EC00E59412 /* InfoPlist.strings */; };
 		806B44EB152401EC00E59412 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 806B44EA152401EC00E59412 /* main.m */; };
 		806B44EF152401EC00E59412 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 806B44EE152401EC00E59412 /* AppDelegate.m */; };
-		806B44F2152401EC00E59412 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 806B44F1152401EC00E59412 /* ViewController.m */; };
+		806B44F2152401EC00E59412 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 806B44F1152401EC00E59412 /* ViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		806B44F5152401EC00E59412 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 806B44F3152401EC00E59412 /* ViewController.xib */; };
-		806B44FD1524048D00E59412 /* WaterflowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 806B44FC1524048D00E59412 /* WaterflowView.m */; };
+		806B44FD1524048D00E59412 /* WaterflowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 806B44FC1524048D00E59412 /* WaterflowView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		806B4514152463DF00E59412 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 806B4513152463DF00E59412 /* QuartzCore.framework */; };
-		8083BC981532B194008D4DF5 /* LoadingMoreFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8083BC971532B194008D4DF5 /* LoadingMoreFooterView.m */; };
-		8083BCA11532BF11008D4DF5 /* EGORefreshTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8083BCA01532BF11008D4DF5 /* EGORefreshTableHeaderView.m */; };
+		8083BC981532B194008D4DF5 /* LoadingMoreFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8083BC971532B194008D4DF5 /* LoadingMoreFooterView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		8083BCA11532BF11008D4DF5 /* EGORefreshTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8083BCA01532BF11008D4DF5 /* EGORefreshTableHeaderView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		8083BCA31532C299008D4DF5 /* blueArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 8083BCA21532C299008D4DF5 /* blueArrow.png */; };
-		80DE39A31525636B002EFAE3 /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 80DE39861525636B002EFAE3 /* ASIAuthenticationDialog.m */; };
-		80DE39A41525636B002EFAE3 /* ASIDataCompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 80DE39891525636B002EFAE3 /* ASIDataCompressor.m */; };
-		80DE39A51525636B002EFAE3 /* ASIDataDecompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 80DE398B1525636B002EFAE3 /* ASIDataDecompressor.m */; };
-		80DE39A61525636B002EFAE3 /* ASIDownloadCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 80DE398D1525636B002EFAE3 /* ASIDownloadCache.m */; };
-		80DE39A71525636B002EFAE3 /* ASIFormDataRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 80DE398F1525636B002EFAE3 /* ASIFormDataRequest.m */; };
-		80DE39A81525636B002EFAE3 /* ASIHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 80DE39911525636B002EFAE3 /* ASIHTTPRequest.m */; };
-		80DE39A91525636B002EFAE3 /* ASIInputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 80DE39951525636B002EFAE3 /* ASIInputStream.m */; };
-		80DE39AA1525636B002EFAE3 /* ASINetworkQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 80DE39971525636B002EFAE3 /* ASINetworkQueue.m */; };
-		80DE39AB1525636B002EFAE3 /* ASIWebPageRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 80DE399A1525636B002EFAE3 /* ASIWebPageRequest.m */; };
-		80DE39AC1525636B002EFAE3 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 80DE399D1525636B002EFAE3 /* Reachability.m */; };
-		80DE39AD1525636B002EFAE3 /* AsyncImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 80DE39A01525636B002EFAE3 /* AsyncImageView.m */; };
-		80DE39AE1525636B002EFAE3 /* FullyLoaded.m in Sources */ = {isa = PBXBuildFile; fileRef = 80DE39A21525636B002EFAE3 /* FullyLoaded.m */; };
+		80DE39A31525636B002EFAE3 /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 80DE39861525636B002EFAE3 /* ASIAuthenticationDialog.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		80DE39A41525636B002EFAE3 /* ASIDataCompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 80DE39891525636B002EFAE3 /* ASIDataCompressor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		80DE39A51525636B002EFAE3 /* ASIDataDecompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 80DE398B1525636B002EFAE3 /* ASIDataDecompressor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		80DE39A61525636B002EFAE3 /* ASIDownloadCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 80DE398D1525636B002EFAE3 /* ASIDownloadCache.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		80DE39A71525636B002EFAE3 /* ASIFormDataRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 80DE398F1525636B002EFAE3 /* ASIFormDataRequest.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		80DE39A81525636B002EFAE3 /* ASIHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 80DE39911525636B002EFAE3 /* ASIHTTPRequest.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		80DE39A91525636B002EFAE3 /* ASIInputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 80DE39951525636B002EFAE3 /* ASIInputStream.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		80DE39AA1525636B002EFAE3 /* ASINetworkQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 80DE39971525636B002EFAE3 /* ASINetworkQueue.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		80DE39AB1525636B002EFAE3 /* ASIWebPageRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 80DE399A1525636B002EFAE3 /* ASIWebPageRequest.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		80DE39AC1525636B002EFAE3 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 80DE399D1525636B002EFAE3 /* Reachability.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		80DE39AD1525636B002EFAE3 /* AsyncImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 80DE39A01525636B002EFAE3 /* AsyncImageView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		80DE39AE1525636B002EFAE3 /* FullyLoaded.m in Sources */ = {isa = PBXBuildFile; fileRef = 80DE39A21525636B002EFAE3 /* FullyLoaded.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		80DE39B115256374002EFAE3 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80DE39B015256374002EFAE3 /* CFNetwork.framework */; };
 		80DE39B315256379002EFAE3 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80DE39B215256379002EFAE3 /* SystemConfiguration.framework */; };
 		80DE39B51525637E002EFAE3 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80DE39B41525637E002EFAE3 /* MobileCoreServices.framework */; };
 		80DE39B71525638A002EFAE3 /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 80DE39B61525638A002EFAE3 /* libz.1.2.5.dylib */; };
-		80DE39B915256390002EFAE3 /* libxml2.2.7.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 80DE39B815256390002EFAE3 /* libxml2.2.7.3.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		04B6567C15E52AF300EFACFE /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = usr/lib/libxml2.2.dylib; sourceTree = SDKROOT; };
+		04B6568415E52B7F00EFACFE /* CollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewController.h; sourceTree = "<group>"; };
+		04B6568515E52B7F00EFACFE /* CollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewController.m; sourceTree = "<group>"; };
+		04B6568615E52B7F00EFACFE /* ColllectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColllectionViewCell.h; sourceTree = "<group>"; };
+		04B6568715E52B7F00EFACFE /* ColllectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColllectionViewCell.m; sourceTree = "<group>"; };
+		04B6568815E52B7F00EFACFE /* WaterFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaterFlowLayout.h; sourceTree = "<group>"; };
+		04B6568915E52B7F00EFACFE /* WaterFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaterFlowLayout.m; sourceTree = "<group>"; };
 		806B44DA152401EC00E59412 /* WaterFlowDisplay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WaterFlowDisplay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		806B44DE152401EC00E59412 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		806B44E0152401EC00E59412 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -95,7 +105,6 @@
 		80DE39B215256379002EFAE3 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		80DE39B41525637E002EFAE3 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		80DE39B61525638A002EFAE3 /* libz.1.2.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = usr/lib/libz.1.2.5.dylib; sourceTree = SDKROOT; };
-		80DE39B815256390002EFAE3 /* libxml2.2.7.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.7.3.dylib; path = usr/lib/libxml2.2.7.3.dylib; sourceTree = SDKROOT; };
 		80DE39BE1525641D002EFAE3 /* SynthesizeSingleton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SynthesizeSingleton.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -104,7 +113,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				80DE39B915256390002EFAE3 /* libxml2.2.7.3.dylib in Frameworks */,
+				04B6567D15E52AF300EFACFE /* libxml2.2.dylib in Frameworks */,
 				80DE39B71525638A002EFAE3 /* libz.1.2.5.dylib in Frameworks */,
 				80DE39B51525637E002EFAE3 /* MobileCoreServices.framework in Frameworks */,
 				80DE39B315256379002EFAE3 /* SystemConfiguration.framework in Frameworks */,
@@ -143,7 +152,7 @@
 		806B44DD152401EC00E59412 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				80DE39B815256390002EFAE3 /* libxml2.2.7.3.dylib */,
+				04B6567C15E52AF300EFACFE /* libxml2.2.dylib */,
 				80DE39B61525638A002EFAE3 /* libz.1.2.5.dylib */,
 				80DE39B41525637E002EFAE3 /* MobileCoreServices.framework */,
 				80DE39B215256379002EFAE3 /* SystemConfiguration.framework */,
@@ -159,6 +168,12 @@
 		806B44E4152401EC00E59412 /* WaterFlowDisplay */ = {
 			isa = PBXGroup;
 			children = (
+				04B6568415E52B7F00EFACFE /* CollectionViewController.h */,
+				04B6568515E52B7F00EFACFE /* CollectionViewController.m */,
+				04B6568615E52B7F00EFACFE /* ColllectionViewCell.h */,
+				04B6568715E52B7F00EFACFE /* ColllectionViewCell.m */,
+				04B6568815E52B7F00EFACFE /* WaterFlowLayout.h */,
+				04B6568915E52B7F00EFACFE /* WaterFlowLayout.m */,
 				806B44ED152401EC00E59412 /* AppDelegate.h */,
 				806B44EE152401EC00E59412 /* AppDelegate.m */,
 				806B44F0152401EC00E59412 /* ViewController.h */,
@@ -340,6 +355,9 @@
 				80DE39AE1525636B002EFAE3 /* FullyLoaded.m in Sources */,
 				8083BC981532B194008D4DF5 /* LoadingMoreFooterView.m in Sources */,
 				8083BCA11532BF11008D4DF5 /* EGORefreshTableHeaderView.m in Sources */,
+				04B6568A15E52B7F00EFACFE /* CollectionViewController.m in Sources */,
+				04B6568B15E52B7F00EFACFE /* ColllectionViewCell.m in Sources */,
+				04B6568C15E52B7F00EFACFE /* WaterFlowLayout.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -411,6 +429,7 @@
 		806B44F9152401EC00E59412 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "WaterFlowDisplay/WaterFlowDisplay-Prefix.pch";
 				HEADER_SEARCH_PATHS = "$(SDKROOT)/usr/include/libxml2";
@@ -423,6 +442,7 @@
 		806B44FA152401EC00E59412 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "WaterFlowDisplay/WaterFlowDisplay-Prefix.pch";
 				HEADER_SEARCH_PATHS = "$(SDKROOT)/usr/include/libxml2";
