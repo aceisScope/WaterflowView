@@ -113,4 +113,9 @@
     return attributes;
 }
 
+- (BOOL)shouldInvalidateLayoutForBoundsChange:(CGRect)newBounds
+{
+	return NO;
+}
+
 @end
