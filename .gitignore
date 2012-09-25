@@ -19,10 +19,6 @@ profile
 *.lock
 .DS_Store
 *.swp
-*.out 
-#*.pbxproj
+*.out
 !*.xcodeproj/project.pbxproj
 
-#PhotoGrid-Info.plist
-
-#PhotoGrid.xcodeproj/project.pbxproj
