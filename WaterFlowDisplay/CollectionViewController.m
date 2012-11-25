@@ -13,6 +13,7 @@
 @interface WaterflowCollectionViewController ()
 
 @property (nonatomic,strong) NSMutableArray *imageUrls;
+@property (nonatomic,readwrite) NSInteger currentPage;
 
 @end
 
@@ -41,13 +42,28 @@
     [((WaterFlowLayout*)self.collectionView.collectionViewLayout) setFlowdatasource:self];
     [((WaterFlowLayout*)self.collectionView.collectionViewLayout) setFlowdelegate:self];
     
+    UIRefreshControl * refreshControl = [[UIRefreshControl alloc] init];
+	refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"Refresh Images"];
+	[self.collectionView addSubview:refreshControl];
+	[refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
+    
     self.imageUrls = [NSArray arrayWithObjects:@"http://img.topit.me/l/201008/11/12815218412635.jpg",@"http://photo.l99.com/bigger/22/1284013907276_zb834a.jpg",@"http://www.webdesign.org/img_articles/7072/BW-kitten.jpg",@"http://www.raiseakitten.com/wp-content/uploads/2012/03/kitten.jpg",@"http://imagecache6.allposters.com/LRG/21/2144/C8BCD00Z.jpg",nil];
+    
+    self.currentPage = 1;
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)refresh:(UIRefreshControl*)sender
+{
+    //refresh images
+    self.currentPage = 1;
+    [self.collectionView reloadData];
+    [sender endRefreshing];
 }
 
 #pragma mark - UICollectionViewDataSource methods
@@ -59,7 +75,7 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 20;
+    return 20*self.currentPage;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -114,5 +130,17 @@
     return 3;
 }
 
+#pragma mark - UIScrollViewDelegate
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
+    float bottomEdge = scrollView.contentOffset.y + scrollView.frame.size.height;
+    
+    if (bottomEdge >=  floor(scrollView.contentSize.height) )
+    {
+        //load more images
+        self.currentPage ++;
+        [self.collectionView reloadData];
+    }
+}
 
 @end
