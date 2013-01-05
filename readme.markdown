@@ -17,11 +17,11 @@ Yet if the images for display are mostly of normal size (not super long), the Wa
 ###DataSource
 1. For WaterflowView(New)
 When to load data for WaterflowView, (or not to load), should be decided in the delegate method 
-``` objective-c
 
-    - (void)flowView:(WaterflowView *)_flowView willLoadData:(int)page
-    
+``` objective-c
+    - (void)flowView:(WaterflowView *)_flowView willLoadData:(int)page   
 ```
+
 WaterflowView detects every scroll-to-bottom, and the delegate will "decide" for WaterflowView if it should reloadData or reloadFailed. 
 2. For WaterFlowLayout
 This follows the datasource and delegate of UICollectionViewLayout.
