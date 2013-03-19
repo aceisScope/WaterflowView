@@ -30,15 +30,12 @@
 - (NSInteger)numberOfColumnsInFlowView:(WaterflowView*)flowView;
 - (NSInteger)flowView:(WaterflowView *)flowView numberOfRowsInColumn:(NSInteger)column;
 - (WaterFlowCell *)flowView:(WaterflowView *)flowView cellForRowAtIndex:(NSInteger)index;
-- (WaterFlowCell *)flowView:(WaterflowView *)flowView cellForRowAtIndexPath:(NSIndexPath *)indexPath;
 @end
 
 @protocol WaterflowViewDelegate <NSObject>
 @required
-- (CGFloat)flowView:(WaterflowView *)flowView heightForRowAtIndexPath:(NSIndexPath *)indexPath;
 - (CGFloat)flowView:(WaterflowView *)flowView heightForCellAtIndex:(NSInteger)index;
 @optional
-- (void)flowView:(WaterflowView *)flowView didSelectRowAtIndexPath:(NSIndexPath *)indexPath;
 - (void)flowView:(WaterflowView *)flowView didSelectAtCell:(WaterFlowCell*)cell ForIndex:(int)index;
 - (void)flowView:(WaterflowView *)flowView willLoadData:(int)page;
 @end
