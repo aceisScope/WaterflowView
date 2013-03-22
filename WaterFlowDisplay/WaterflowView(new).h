@@ -50,8 +50,8 @@
 	NSMutableArray *_visibleCells; 
 	NSMutableDictionary *_reusedCells; 
 	
-	id <WaterflowViewDelegate> _flowdelegate;
-    id <WaterflowViewDatasource> _flowdatasource;
+	__weak id <WaterflowViewDelegate> _flowdelegate;
+    __weak id <WaterflowViewDatasource> _flowdatasource;
 }
 
 - (void)reloadData;
@@ -62,7 +62,7 @@
 @property (nonatomic, retain) NSMutableArray *cellIndex; //array of cells index arrays, count = numberofcolumns
 @property (nonatomic, retain) NSMutableArray *visibleCells;  //array of visible cell arrays, count = numberofcolumns
 @property (nonatomic, retain) NSMutableDictionary *reusableCells;  //key- identifier, value- array of cells
-@property (nonatomic, assign) id <WaterflowViewDelegate> flowdelegate;
-@property (nonatomic, assign) id <WaterflowViewDatasource> flowdatasource;
+@property (nonatomic, weak) id <WaterflowViewDelegate> flowdelegate;
+@property (nonatomic, weak) id <WaterflowViewDatasource> flowdatasource;
 
 @end

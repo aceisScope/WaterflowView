@@ -27,10 +27,6 @@
 @end
 
 @implementation WaterflowView
-@synthesize cellHeight=_cellHeight,visibleCells=_visibleCells,reusableCells=_reusedCells;
-@synthesize flowdelegate=_flowdelegate,flowdatasource=_flowdatasource;
-@synthesize loadFooterView=_loadFooterView,loadingmore=_loadingmore;
-@synthesize refreshHeaderView=_refreshHeaderView,isRefreshing=_isRefreshing;
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -51,7 +47,7 @@
         self.loadingmore = NO;
         [self addSubview:self.loadFooterView];
         
-        self.refreshHeaderView = [[[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f,  -REFRESHINGVIEW_HEIGHT, self.frame.size.width,REFRESHINGVIEW_HEIGHT)] autorelease];
+        self.refreshHeaderView = [[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f,  -REFRESHINGVIEW_HEIGHT, self.frame.size.width,REFRESHINGVIEW_HEIGHT)];
         [self addSubview:self.refreshHeaderView];
         self.refreshHeaderView.delegate = self;
         self.isRefreshing = NO;
@@ -74,7 +70,6 @@
     self.flowdatasource = nil;
     self.flowdelegate = nil;
     self.loadFooterView = nil;
-    [super dealloc];
 }
 
 - (void)setFlowdatasource:(id<WaterflowViewDatasource>)flowdatasource
@@ -109,7 +104,6 @@
     if (cellsWithIndentifier &&  cellsWithIndentifier.count > 0)
     {
         WaterFlowCell *cell = [cellsWithIndentifier lastObject];
-        [[cell retain] autorelease];
         [[self.reusableCells objectForKey:identifier] removeLastObject];
         return cell;
     }
@@ -383,26 +377,7 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     [self pageScroll];
-    
     [self.refreshHeaderView egoRefreshScrollViewDidScroll:scrollView];
-    
-    /* //alternative for firing immediately
-     //if scrollview reaches bottom
-     CGPoint offset = scrollView.contentOffset;
-     CGRect bounds = scrollView.bounds;
-     CGSize size = scrollView.contentSize;
-     UIEdgeInsets inset = scrollView.contentInset;
-     float y = offset.y + bounds.size.height - inset.bottom;
-     float h = size.height;
-     
-     float reload_distance = 10;
-     if(y > h + reload_distance) 
-     {
-         NSLog(@"load more rows");
-         [self loadMoreImages];
-     }
-     */
-     
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
@@ -463,7 +438,6 @@
 {
     self.indexPath = nil;
     self.reuseIdentifier = nil;
-    [super dealloc];
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event

@@ -10,7 +10,7 @@ Resembled datasource and delegate of UITableView, and mainly intended to make a 
 Each cell could be simply initialized with cellAtIndexPath way.
 
 ###Different Versions
-1. The WaterflowView(New) is based on a new layout pattern i.e. whenever to place a new cell, find the shortest column and insert the cell into the column, rather than layout by rows in column in the old one. To imply the new one in project, just change the name of file...
+1. The WaterflowView(New) is based on a new layout pattern i.e. whenever to place a new cell, find the shortest column and insert the cell into the column, rather than layout by rows in column in the old one. To imply the new one in project, just change the name of file... note that only one file, WaterflowView or WaterflowView(new), should exist in a project
 Yet if the images for display are mostly of normal size (not super long), the WaterflowView(old) is still recommended.
 2. WaterFlowLayout is UICollectionViewLayout specially for the UICollectionView in iOS6. Note that this is not a subclass of UICollectionViewFlowLayout.
 
