@@ -9,6 +9,9 @@
 #import "WaterFlowLayout.h"
 
 @implementation WaterFlowLayout
+{
+    NSMutableArray *attributes;
+}
 
 - (void)setFlowdatasource:(id<UICollectionViewDataSourceWaterFlowLayout>)flowdatasource
 {
@@ -25,6 +28,8 @@
 -(void)prepareLayout
 {
     [super prepareLayout];
+    
+    attributes = [NSMutableArray array];
     
     _cellCount = [[self collectionView] numberOfItemsInSection:0];
     
@@ -63,6 +68,16 @@
             minHeight = [self.flowdelegate flowLayout:self heightForRowAtIndex:i];
             [self.cellPosition addObject:[NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt:minHeightAtColumn*(cellWidth+padding)],@"x",[NSNumber numberWithFloat:[self.flowdelegate flowLayout:self heightForRowAtIndex:i]],@"y", nil]];
             minHeightAtColumn ++;
+            
+            NSIndexPath *path = [NSIndexPath indexPathForItem:i inSection:0];
+            UICollectionViewLayoutAttributes* attribute = [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:path];
+            CGFloat x = [[[self.cellPosition objectAtIndex:path.item] objectForKey:@"x"] floatValue];
+            CGFloat y = [[[self.cellPosition objectAtIndex:path.item] objectForKey:@"y"] floatValue];
+            CGFloat height = [_flowdelegate flowLayout:self heightForRowAtIndex:path.item];
+            attribute.size = CGSizeMake(cellWidth, height);
+            attribute.center = CGPointMake(x + cellWidth/2, y - height/2);
+            [attributes addObject:attribute];
+            
             continue;
         }
         
@@ -80,6 +95,15 @@
         [[self.cellHeight objectAtIndex:minHeightAtColumn] addObject:[NSNumber numberWithFloat:minHeight+=[self.flowdelegate flowLayout:self heightForRowAtIndex:i]]];
         [[self.cellIndex objectAtIndex:minHeightAtColumn]addObject:[NSNumber numberWithInt:i]];
         [self.cellPosition addObject:[NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt:(cellWidth+padding)*minHeightAtColumn],@"x",[NSNumber numberWithFloat:minHeight],@"y", nil]];
+        
+        NSIndexPath *path = [NSIndexPath indexPathForItem:i inSection:0];
+        UICollectionViewLayoutAttributes* attribute = [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:path];
+        CGFloat x = [[[self.cellPosition objectAtIndex:path.item] objectForKey:@"x"] floatValue];
+        CGFloat y = [[[self.cellPosition objectAtIndex:path.item] objectForKey:@"y"] floatValue];
+        CGFloat height = [_flowdelegate flowLayout:self heightForRowAtIndex:path.item];
+        attribute.size = CGSizeMake(cellWidth, height);
+        attribute.center = CGPointMake(x + cellWidth/2, y - height/2);
+        [attributes addObject:attribute];
     }
     
     for (int j = 0; j< numberOfColumns; j++)
@@ -94,23 +118,14 @@
 
 - (UICollectionViewLayoutAttributes *)layoutAttributesForItemAtIndexPath:(NSIndexPath *)path
 {
-    UICollectionViewLayoutAttributes* attributes = [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:path];
-    CGFloat x = [[[self.cellPosition objectAtIndex:path.item] objectForKey:@"x"] floatValue];
-    CGFloat y = [[[self.cellPosition objectAtIndex:path.item] objectForKey:@"y"] floatValue];
-    CGFloat height = [_flowdelegate flowLayout:self heightForRowAtIndex:path.item];
-    attributes.size = CGSizeMake(cellWidth, height);
-    attributes.center = CGPointMake(x + cellWidth/2, y - height/2);
-    return attributes;
+    return attributes[path.item];
 }
 
 -(NSArray*)layoutAttributesForElementsInRect:(CGRect)rect
 {
-    NSMutableArray* attributes = [NSMutableArray array];
-    for (NSInteger i=0 ; i < _cellCount; i++) {
-        NSIndexPath* indexPath = [NSIndexPath indexPathForItem:i inSection:0];
-        [attributes addObject:[self layoutAttributesForItemAtIndexPath:indexPath]];
-    }
-    return attributes;
+    return [attributes filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(UICollectionViewLayoutAttributes *evaluatedObject, NSDictionary *bindings) {
+        return CGRectIntersectsRect(rect, [evaluatedObject frame]);
+    }]];
 }
 
 - (BOOL)shouldInvalidateLayoutForBoundsChange:(CGRect)newBounds

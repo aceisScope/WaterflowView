@@ -1,8 +1,7 @@
 WaterflowView 
 ==========================
 
-<img src="https://github.com/aceisScope/WaterflowView/raw/master/screenshot.png"/>  
-<img src="https://github.com/aceisScope/WaterflowView/raw/master/screenshot2.png"/> 
+![ScreenShot](https://github.com/aceisScope/WaterflowView/raw/master/screenshot.png)![ScreenShot](https://github.com/aceisScope/WaterflowView/raw/master/screenshot2.png)
 
 ###Description
 
