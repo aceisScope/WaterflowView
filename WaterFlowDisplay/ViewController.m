@@ -11,6 +11,7 @@
 #import "AsyncImageView.h"
 
 #define NUMBER_OF_COLUMNS 3
+#define NUMBER_OF_ROWS    6
 
 @interface ViewController ()
 @property (nonatomic,retain) NSMutableArray *imageUrls;
@@ -33,7 +34,7 @@
     self.currentPage = 1;
     
     self.imageUrls = [NSMutableArray array];
-    self.imageUrls = [NSArray arrayWithObjects:@"http://img.topit.me/l/201008/11/12815218412635.jpg",@"http://photo.l99.com/bigger/22/1284013907276_zb834a.jpg",@"http://www.webdesign.org/img_articles/7072/BW-kitten.jpg",@"http://www.raiseakitten.com/wp-content/uploads/2012/03/kitten.jpg",@"http://imagecache6.allposters.com/LRG/21/2144/C8BCD00Z.jpg",nil];
+    self.imageUrls = [NSMutableArray arrayWithObjects:@"http://img.topit.me/l/201008/11/12815218412635.jpg",@"http://photo.l99.com/bigger/22/1284013907276_zb834a.jpg",@"http://www.webdesign.org/img_articles/7072/BW-kitten.jpg",@"http://www.raiseakitten.com/wp-content/uploads/2012/03/kitten.jpg",@"http://imagecache6.allposters.com/LRG/21/2144/C8BCD00Z.jpg",nil];
 }
 
 - (void)dealloc
@@ -68,7 +69,7 @@
 
 - (NSInteger)flowView:(WaterflowView *)flowView numberOfRowsInColumn:(NSInteger)column
 {
-    return 6;
+    return NUMBER_OF_ROWS;
 }
 
 - (WaterFlowCell *)flowView:(WaterflowView *)flowView_ cellForRowAtIndex:(NSInteger)index

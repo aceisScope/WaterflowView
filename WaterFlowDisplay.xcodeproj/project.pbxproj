@@ -40,6 +40,7 @@
 		80DE39B315256379002EFAE3 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80DE39B215256379002EFAE3 /* SystemConfiguration.framework */; };
 		80DE39B51525637E002EFAE3 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80DE39B41525637E002EFAE3 /* MobileCoreServices.framework */; };
 		80DE39B71525638A002EFAE3 /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 80DE39B61525638A002EFAE3 /* libz.1.2.5.dylib */; };
+		88F91F1D17B379EC00289F91 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88F91F1C17B379EC00289F91 /* Default-568h@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -106,6 +107,7 @@
 		80DE39B41525637E002EFAE3 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		80DE39B61525638A002EFAE3 /* libz.1.2.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = usr/lib/libz.1.2.5.dylib; sourceTree = SDKROOT; };
 		80DE39BE1525641D002EFAE3 /* SynthesizeSingleton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SynthesizeSingleton.h; sourceTree = "<group>"; };
+		88F91F1C17B379EC00289F91 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,6 +193,7 @@
 		806B44E5152401EC00E59412 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				88F91F1C17B379EC00289F91 /* Default-568h@2x.png */,
 				806B44E6152401EC00E59412 /* WaterFlowDisplay-Info.plist */,
 				806B44E7152401EC00E59412 /* InfoPlist.strings */,
 				806B44EA152401EC00E59412 /* main.m */,
@@ -325,6 +328,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				806B44E9152401EC00E59412 /* InfoPlist.strings in Resources */,
+				88F91F1D17B379EC00289F91 /* Default-568h@2x.png in Resources */,
 				806B44F5152401EC00E59412 /* ViewController.xib in Resources */,
 				8083BCA31532C299008D4DF5 /* blueArrow.png in Resources */,
 			);
