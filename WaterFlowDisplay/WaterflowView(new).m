@@ -147,6 +147,7 @@
 - (void)initialize
 {    
     numberOfColumns = [self.flowdatasource numberOfColumnsInFlowView:self];
+    padding = 10.f;
     
     self.reusableCells = [NSMutableDictionary dictionary];
     self.cellHeight = [NSMutableArray arrayWithCapacity:numberOfColumns];
@@ -257,7 +258,7 @@
     
     for (int i = 0 ; i< numberOfColumns; i++)
     {
-        float origin_x = i * (self.frame.size.width / numberOfColumns);
+        float origin_x = i * (((self.frame.size.width - (numberOfColumns-1)*padding) / numberOfColumns)+padding);
 		float width = self.frame.size.width / numberOfColumns;
         
         WaterFlowCell *cell = nil;

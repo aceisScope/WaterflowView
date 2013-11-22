@@ -45,6 +45,8 @@
 {
     NSInteger numberOfColumns ; 
     NSInteger currentPage;
+    
+    CGFloat padding;
 	
 	NSMutableArray *_cellHeight; 
 	NSMutableArray *_visibleCells; 
