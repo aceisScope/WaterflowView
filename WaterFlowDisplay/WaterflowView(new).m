@@ -251,6 +251,16 @@
     [self initialize];
 }
 
+- (void)reloadFailed
+{
+    currentPage --;
+    if(self.loadingmore)
+    {
+        self.loadingmore = NO;
+        self.loadFooterView.showActivityIndicator = NO;
+    }
+}
+
 - (void)pageScroll
 {
     //CGPoint offset = self.contentOffset;
