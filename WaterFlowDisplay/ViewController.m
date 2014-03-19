@@ -25,7 +25,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.    
+	// Do any additional setup after loading the view, typically from a nib.
+    if ([self respondsToSelector:@selector(setEdgesForExtendedLayout:)]) {
+        [self setEdgesForExtendedLayout:UIRectEdgeNone];
+    }
+    
     flowView = [[WaterflowView alloc] initWithFrame:self.view.frame];
     flowView.flowdatasource = self;
     flowView.flowdelegate = self;

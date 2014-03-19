@@ -191,8 +191,9 @@
     for (int i = 0; i < numberOfColumns; i++)
     {
         NSMutableArray *array = [self.visibleCells objectAtIndex:i];
-        for (id cell in array)
+        for (int i = 0; i< array.count; i++)
         {
+            WaterFlowCell* cell = array[i];
             [self recycleCellIntoReusableQueue:(WaterFlowCell*)cell];
             [cell removeFromSuperview];
         }

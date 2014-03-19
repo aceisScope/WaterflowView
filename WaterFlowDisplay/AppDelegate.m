@@ -20,12 +20,12 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] ;
     // Override point for customization after application launch.
     
-//    self.viewController = [[ViewController alloc] initWithNibName:@"ViewController" bundle:nil];
-//    self.window.rootViewController = self.viewController;
+    self.viewController = [[ViewController alloc] initWithNibName:@"ViewController" bundle:nil];
+    self.window.rootViewController = self.viewController;
     
-    WaterFlowLayout *layout = [[WaterFlowLayout alloc]init];
-    self.vc = [[WaterflowCollectionViewController alloc]initWithCollectionViewLayout:layout];
-    self.window.rootViewController = self.vc;
+//    WaterFlowLayout *layout = [[WaterFlowLayout alloc]init];
+//    self.vc = [[WaterflowCollectionViewController alloc]initWithCollectionViewLayout:layout];
+//    self.window.rootViewController = self.vc;
     
     [self.window makeKeyAndVisible];
     return YES;
