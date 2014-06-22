@@ -14,7 +14,7 @@ Yet if the images for display are mostly of normal size (not super long), the Wa
 2. WaterFlowLayout is UICollectionViewLayout specially for the UICollectionView in iOS6. Note that this is not a subclass of UICollectionViewFlowLayout.
 
 ###DataSource
-For WaterflowView(New)
+1. For WaterflowView(New)
 When to load data for WaterflowView, (or not to load), should be decided in the delegate method
 
 ``` objective-c
