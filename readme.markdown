@@ -14,7 +14,7 @@ Yet if the images for display are mostly of normal size (not super long), the Wa
 2. WaterFlowLayout is UICollectionViewLayout specially for the UICollectionView in iOS6. Note that this is not a subclass of UICollectionViewFlowLayout.
 
 ###DataSource
-1. For WaterflowView(New)
+####For WaterflowView(New)
 When to load data for WaterflowView, (or not to load), should be decided in the delegate method
 
 ``` objective-c
@@ -23,12 +23,12 @@ When to load data for WaterflowView, (or not to load), should be decided in the 
 
 WaterflowView detects every scroll-to-bottom, and the delegate will "decide" for WaterflowView if it should reloadData or reloadFailed.
 
-2. For WaterFlowLayout
+#### For WaterFlowLayout
 This follows the datasource and delegate of UICollectionViewLayout.
 
 ###License
 This is available under the MIT license.
 
 ###NEW
-The (Swift Version)[https://github.com/aceisScope/WaterflowSwift] has the basic UICollectionView implementation but has not yet been  fully compeleted. Test and learn only.
+The [Swift Version](https://github.com/aceisScope/WaterflowSwift) has the basic UICollectionView implementation but has not yet been  fully compeleted. Test and learn only.
 Have fun forking.
