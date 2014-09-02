@@ -106,13 +106,12 @@
         [attributes addObject:attribute];
     }
     
-    for (int j = 0; j< numberOfColumns; j++)
+    for (int j = 0; j < self.cellHeight.count; j++)
     {
-        if(self.cellHeight.count < numberOfColumns ||self.cellHeight.count == 0) break;
         CGFloat columnHeight = [[[self.cellHeight objectAtIndex:j] lastObject] floatValue];
-        scrollHeight = scrollHeight>columnHeight?scrollHeight:columnHeight;
+        scrollHeight = scrollHeight > columnHeight ? scrollHeight : columnHeight;
     }
-
+    
     return scrollHeight;
 }
 

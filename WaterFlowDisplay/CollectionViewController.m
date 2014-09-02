@@ -75,7 +75,7 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 20*self.currentPage;
+    return 1;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -127,7 +127,7 @@
 #pragma mark- UICollectionViewDatasourceFlowLayout
 - (NSInteger)numberOfColumnsInFlowLayout:(WaterFlowLayout*)flowlayout
 {
-    return 3;
+    return 2;
 }
 
 #pragma mark - UIScrollViewDelegate
