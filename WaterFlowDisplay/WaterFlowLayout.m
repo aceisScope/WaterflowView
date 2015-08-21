@@ -68,6 +68,7 @@
             minHeight = [self.flowdelegate flowLayout:self heightForRowAtIndex:i];
             [self.cellPosition addObject:[NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt:minHeightAtColumn*(cellWidth+padding)],@"x",[NSNumber numberWithFloat:[self.flowdelegate flowLayout:self heightForRowAtIndex:i]],@"y", nil]];
             minHeightAtColumn ++;
+            if (minHeightAtColumn >= numberOfColumns) minHeightAtColumn = numberOfColumns;
             
             NSIndexPath *path = [NSIndexPath indexPathForItem:i inSection:0];
             UICollectionViewLayoutAttributes* attribute = [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:path];
